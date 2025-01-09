@@ -1,40 +1,107 @@
-<DOCTYPE html>
-    <html>
-    <head>
-        <title> THE CALCULATOR </title> 
-        <link rel="stylesheet" href ="calculator.css">
-        
-    </head>
-    <body>
-        <div class ="container">
-            <div class ="text-input">
-                <p name ="user-input" id ="user-input"> 0 </p>
-            </div>
-    
-            <div class ="calculator-buttons">
-                <button type = "button" class ="key-funtion operators"> AC </button>
-                <button type ="button" class="key-funtion operators"> DEL </button>
-                <button type ="button" class="key-funtion operators"> % </button>
-                <button type ="button" class="key-operators"> / </button>
-                <button type ="button" class="numbers"> 7 </button>
-                <button type ="button" class="numbers"> 8 </button>
-                <button type ="button" class="numbers"> 9 </button>
-                <button type = "button" class ="key-operators"> X </button>
-                <button type ="button" class="numbers"> 4 </button>
-                <button type ="button" class="numbers"> 5 </button>
-                <button type ="button" class="numbers"> 6 </button>
-                <button type = "button" class ="key-operators"> - </button>
-                <button type ="button" class="numbers"> 1 </button>
-                <button type ="button" class="numbers"> 2 </button>
-                <button type ="button" class="numbers"> 3 </button>
-                <button type ="button" class="key-operators"> + </button>
-                <button type ="button" class="key-operators-zero"> 0 </button>
-                <button type ="button" class="numbers"> . </button>
-                <button type ="button" class="key-operators"> = </button>
-            </div>   
-        </div>
-        <script type="javascript" src="calculator.js"></script>
+<!DOCTYPE html>
+<html>
 
-    </body>
-    </html>
-    
+<head>
+    <title> THE CALCULATOR </title>
+    <style>
+        table {
+            border: 5px solid black;
+            padding: 9px;
+
+        }
+
+        td {
+            border: 2px solid black;
+            padding: 9px;
+
+        }
+
+        #screen {
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="4" id="screen"></td>
+        </tr>
+        <tr>
+            <td onclick="clickHandler('0')">0</td>
+            <td onclick="clickHandler('1')">1</td>
+            <td onclick="clickHandler ('2')">2</td>
+            <td onclick="clickHandler('3')">3</td>
+        </tr>
+
+        <tr>
+            <td onclick="clickHandler ('4')">4</td>
+            <td onclick="clickHandler('5')">5</td>
+            <td onclick="clickHandler('6')">6</td>
+            <td onclick="clickHandler('7')">7</td>
+        </tr>
+
+        <tr>
+            <td onclick="clickHandler('8')">8</td>
+            <td onclick="clickHandler('9')">9</td>
+            <td onclick="clickHandler ('+')">+</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td onclick="clickHandler ('*')">*</td>
+            <td onclick="clickHandler('/')">/</td>
+            <td onclick="clickEvaluate()">=</td>
+            <td>C</td>
+        </tr>
+
+
+
+
+    </table>
+    <script>
+        console.log("helloe world");
+
+        function clickHandler(value) {
+            console.log("Button Clicked   " + value);
+
+            if (value == '+' || value == '-' || value == '*' || value == '/') {
+                value = " " + value + " ";
+            }
+            
+
+            var screenContent = document.getElementById("screen");
+            screenContent.innerHTML = screenContent.innerHTML + value;
+
+        }
+
+        function clickEvaluate() {
+            console.log("Evaluate Clicked");
+
+            var expression = document.getElementById("screen").innerHTML;
+            console.log("expression: " + expression);
+
+            var expressionArra = expression.split(" ");
+            console.log("Expression Arra: " + expressionArra);
+
+            var result = 0;
+
+            if (expressionArra[1] == '+') {
+                result = parseInt(expressionArra[0]) + parseInt(expressionArra[2]);
+            }
+            document.getElementById("screen").innerHTML = result;
+        }
+        function clearHandeler(){
+
+        }
+        screenContent.innerHTML = screenContent.innerHTML = "    ";
+            
+        
+       
+    </script>
+    <!--<div class ="container" >
+        <h1> CALCULATOR </h1>
+        <div></div>
+    </div> -->
+</body>
+
+</html>
